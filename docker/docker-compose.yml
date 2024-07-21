@@ -11,7 +11,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123
     volumes:
-      - mariadb-data:/var/lib/mysql
+      - mariadb-data:/var/lib/mysql/
 
   redis:
     image: redis:alpine
@@ -24,9 +24,23 @@ services:
     working_dir: /home/frappe
     volumes:
       - .:/workspace
+      # - frappe-data:/home/frappe/
+      - frappe-data-2:/home/frappe/
+      # - frappe-app-data:/home/frappe/frappe-bench/apps/
+      # - frappe-app-frappe-data:/home/frappe/frappe-bench/apps/frappe/
+      # - frappe-app-lms-data:/home/frappe/frappe-bench/apps/lms/
+      # - frappe-log-data:/home/frappe/frappe-bench/sites/lms.localhost/logs/
+      # - frappe-log-data:/home/frappe/frappe-bench/sites/lms.localhost/logs/
     ports:
       - 8000:8000
       - 9000:9000
 
 volumes:
   mariadb-data:
+  frappe-data:
+  frappe-data-2:
+  # frappe-app-data:
+  # frappe-app-frappe-data:
+  # frappe-app-lms-data:
+  # frappe-log-data:
+    
